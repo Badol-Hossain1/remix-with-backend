@@ -4,7 +4,7 @@ import React from "react";
 export default function NewNotes() {
   return (
     <>
-      <Form method="post" id="note-from">
+      <form method="post" id="note-from">
         <div className="flex justify-center items-center  text-white gap-4">
           <label htmlFor="title" className="font-semibold text-4xl">
             Title
@@ -17,7 +17,7 @@ export default function NewNotes() {
           />
         </div>{" "}
         <div className="flex justify-center items-center mt-10 text-white gap-4">
-          <label htmlFor="title" className="font-bold text-4xl">
+          <label htmlFor="content" className="font-bold text-4xl">
             content
           </label>
           <textarea
@@ -30,11 +30,11 @@ export default function NewNotes() {
           />
         </div>{" "}
         <div className="flex justify-center mt-10">
-          <button className=" text-white bg-green-500 px-4 py-3 rounded-md font-semibold">
+          <button  className=" text-white bg-green-500 px-4 py-3 rounded-md font-semibold">
             Add Note
           </button>
         </div>
-      </Form>
+      </form>
     </>
   );
 }
