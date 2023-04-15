@@ -1,11 +1,17 @@
-import { Form } from "@remix-run/react";
+import { Form, useActionData, useNavigation } from "@remix-run/react";
 import React from "react";
 
 export default function NewNotes() {
+  const navigation = useNavigation();
+  const data = useActionData();
+  console.log(data);
+
+  const isSubmitting = navigation.state === "submitting";
   return (
     <>
-      <form method="post" id="note-from">
-        <div className="flex justify-center items-center  text-white gap-4">
+      <Form method="post" id="note-from">
+        {data?.message && <p className="text-white text-center text-xl font-bold">{data.message}</p>}
+        <div className="flex justify-center items-center  text-white gap-4 mt-4">
           <label htmlFor="title" className="font-semibold text-4xl">
             Title
           </label>
@@ -30,11 +36,14 @@ export default function NewNotes() {
           />
         </div>{" "}
         <div className="flex justify-center mt-10">
-          <button  className=" text-white bg-green-500 px-4 py-3 rounded-md font-semibold">
-            Add Note
+          <button
+            disabled={isSubmitting}
+            className=" text-white bg-green-500 px-4 py-3 rounded-md font-semibold"
+          >
+            {isSubmitting ? "Adding..." : "Add Note"}
           </button>
         </div>
-      </form>
+      </Form>
     </>
   );
 }
