@@ -3,7 +3,7 @@ import NewNotes from "../components/NewNotes";
 import { getStoredNotes, storeNotes } from "../data/notes";
 import { Response, json, redirect } from "@remix-run/node";
 import NodeList from "../components/NodeList";
-import { useLoaderData } from "@remix-run/react";
+import { useCatch, useLoaderData } from "@remix-run/react";
 
 export default function notes() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -25,6 +25,8 @@ export default function notes() {
 }
 export async function loader() {
   const notes = await getStoredNotes();
+
+
   return notes;
   // return new Response(JSON.stringify(notes), {
   //   headers: { "Content-Type": "application/json" },
@@ -51,3 +53,4 @@ export async function action({ request }) {
   await storeNotes(updateNotes);
   return redirect("/notes");
 }
+

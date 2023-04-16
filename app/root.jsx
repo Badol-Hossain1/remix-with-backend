@@ -34,3 +34,32 @@ export default function App() {
     </html>
   );
 }
+
+
+export function ErrorBoundary ({error}){
+  return (
+    <html lang="en">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <Meta />
+        <Links />
+     
+      </head>
+      <body className="bg-blue-600">
+        <header className="mt-6">
+        <Nav />
+        </header>
+        <main>
+          <p>
+            {error.message}
+          </p>
+        </main>
+        <Outlet />
+        <ScrollRestoration />
+        <Scripts />
+        <LiveReload />
+      </body>
+    </html>
+  );
+}
