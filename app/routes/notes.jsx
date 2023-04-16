@@ -5,6 +5,10 @@ import { Response, json, redirect } from "@remix-run/node";
 import NodeList from "../components/NodeList";
 import { useCatch, useLoaderData } from "@remix-run/react";
 
+export const meta = () => {
+  return [{ title: "all my notes" }];
+};
+
 export default function notes() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const notes = useLoaderData();
